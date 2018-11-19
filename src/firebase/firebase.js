@@ -11,6 +11,21 @@ const config = {
 
 firebase.initializeApp(config);
 
-firebase.database().ref().set({
-  name: 'Jakub Chmielewski'
+const database = firebase.database()
+
+database.ref().set({
+  name: 'Jakub Chmielewski',
+  age: 21,
+  isSingle: false,
+  location: {
+    city: 'Białystok',
+    country: 'Poland'
+  }
 });
+
+// database.ref().set('This is my data');
+
+database.ref('age').set(27);
+database.ref('location/city').set('Warszawa');
+
+database.ref('attributes').set({ height: 178, weight: 80 });
