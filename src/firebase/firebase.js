@@ -21,11 +21,25 @@ database.ref().set({
     city: 'Białystok',
     country: 'Poland'
   }
-});
+}).then(() => {
+  console.log('Data is saved');
+}).catch((error) => {
+  console.log('This faled.', e);
+})
 
 // database.ref().set('This is my data');
+// database.ref('age').set(27);
+// database.ref('location/city').set('Warszawa');
+// database.ref('attributes').set({ height: 178, weight: 80 }).then(() => {
+//   console.log('Second set call worked.');
+// }).catch((e) => {
+//   console.log('Things didnt for the second error', e);
+// });
 
-database.ref('age').set(27);
-database.ref('location/city').set('Warszawa');
+database.ref('isSingle').remove().then(() => {
+    console.log('Data was removed.');
+  }).catch((e) => {
+    console.log('Did not remove data', e);
+  });
 
-database.ref('attributes').set({ height: 178, weight: 80 });
+database.ref('age').set(null);
