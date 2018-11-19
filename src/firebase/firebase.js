@@ -32,19 +32,44 @@ database.ref().set({
   console.log('This faled.', e);
 });
 
-// database.ref().update({
-//   name: 'Kuba',
-//   age: 20,
-//   job: 'Software developer',
-//   isSingle: null,
-//   'location/city': 'Warszawa'
-// });
 
-database.ref().update({
-  stressLevel: 9,
-  'job/company': 'Netguru',
-  'location/city': 'Poznań'
+database.ref().on('value', (snapshot) => {
+  const val = snapshot.val();
+  console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
 });
+
+// database.ref()
+//   .once('value')
+//   .then((snapshot) => {
+//     const val = snapshot.val();
+//     console.log(val);
+//   })
+//   .catch((e) => {
+//     console.log('Error fetching data', e);
+//   });
+
+// database.ref().on('value', (snapshot) => {
+//     const val = snapshot.val();
+//     console.log(val);
+//   });
+
+// setTimeout(() => {
+//   database.ref().update({
+//     name: 'Kuba',
+//     age: 20,
+//   });
+// }, 3500)
+
+// setTimeout(() => {
+//   database.ref().off();
+// }, 5000)
+
+// setTimeout(() => {
+//   database.ref().update({
+//     name: 'Kuba',
+//     age: 18,
+//   });
+// }, 7000)
 
 // database.ref().set('This is my data');
 // database.ref('age').set(27);
