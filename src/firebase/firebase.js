@@ -13,30 +13,81 @@ firebase.initializeApp(config);
 
 const database = firebase.database()
 
-database.ref().set({
-  name: 'Jakub Chmielewski',
-  age: 21,
-  isSingle: false,
-  stressLevel: 6,
-  job: {
-    title: 'Software developer',
-    company: 'Bitcraft'
-  },
-  location: {
-    city: 'Białystok',
-    country: 'Poland'
-  }
-}).then(() => {
-  console.log('Data is saved');
-}).catch((error) => {
-  console.log('This faled.', e);
+database.ref('expenses').push({
+  description: "rent",
+  note: "",
+  amount: 109500,
+  createdAt: 3890124691872
+});
+
+database.ref('expenses').push({
+  description: "Phone bill",
+  note: "",
+  amount: 5900,
+  createdAt: 3890124691872
+});
+
+database.ref('expenses').push({
+  description: "Food",
+  note: "",
+  amount: 109500,
+  createdAt: 3890124691872
 });
 
 
-database.ref().on('value', (snapshot) => {
-  const val = snapshot.val();
-  console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
-});
+// database.ref('notes').push({
+//   title: 'Course Topics',
+//   body: 'React native, angular, python'
+// });
+
+
+// const firebaseNotes = {
+//   notes: {
+//     apoijasd: {
+//       id: '12',
+//       title: 'First note!'
+//     },
+//     dasvgdujh: {
+//       id: '45',
+//       title: '45 note!'
+//     }
+//   }
+// }
+
+// const notes = [{
+//   id: '12',
+//   title: 'First note!'
+// },{
+//   id: '45',
+//   title: '45 note!'
+// }];
+
+// database.ref().set(firebaseNotes);
+
+// database.ref().set({
+//   name: 'Jakub Chmielewski',
+//   age: 21,
+//   isSingle: false,
+//   stressLevel: 6,
+//   job: {
+//     title: 'Software developer',
+//     company: 'Bitcraft'
+//   },
+//   location: {
+//     city: 'Białystok',
+//     country: 'Poland'
+//   }
+// }).then(() => {
+//   console.log('Data is saved');
+// }).catch((error) => {
+//   console.log('This faled.', e);
+// });
+
+
+// database.ref().on('value', (snapshot) => {
+//   const val = snapshot.val();
+//   console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
+// });
 
 // database.ref()
 //   .once('value')
